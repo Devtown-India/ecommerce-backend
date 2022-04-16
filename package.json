@@ -3,15 +3,29 @@
     "version": "1.0.0",
     "description": "A backend service for ecommerce application",
     "main": "index.js",
-    "scripts": {},
+    "scripts": {
+        "dev": "nodemon -w src --exec \"babel-node src \"",
+        "build": "babel src --out-dir dist"
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/ShapeAI/ecommerce-backend.git"
     },
-    "author": "Karti Gupta",
+    "author": "Kartik Gupta",
     "license": "MIT",
     "bugs": {
         "url": "https://github.com/ShapeAI/ecommerce-backend/issues"
     },
-    "homepage": "https://github.com/ShapeAI/ecommerce-backend#readme"
+    "homepage": "https://github.com/ShapeAI/ecommerce-backend#readme",
+    "dependencies": {
+        "express": "^4.17.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.15",
+        "@babel/cli": "^7.16.0",
+        "@babel/core": "^7.16.0",
+        "@babel/node": "^7.16.0",
+        "@babel/preset-env": "^7.16.4",
+        "@babel/plugin-transform-runtime": "^7.16.4"
+    }
 }
