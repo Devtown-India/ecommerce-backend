@@ -1,0 +1,17 @@
+{
+    "name": "ecommerce-backend",
+    "version": "1.0.0",
+    "description": "A backend service for ecommerce application",
+    "main": "index.js",
+    "scripts": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/ShapeAI/ecommerce-backend.git"
+    },
+    "author": "Karti Gupta",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ShapeAI/ecommerce-backend/issues"
+    },
+    "homepage": "https://github.com/ShapeAI/ecommerce-backend#readme"
+}
