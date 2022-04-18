@@ -23,14 +23,12 @@
     - compatibleWith :  [ "iPhone13", "iPhone12", "Apple Watch"]
     - stock : Number
     - color : String
-    - weight : String,
-    - mfd : Number (year manufactured in )
 
 - ## Category
     - name : String
     - description : String
 
-https://github.com/ShapeAI/ecommerce-backend.git- ## Order
+- ## Order
     - address : Adress (from address schema)
     - user : User (from user schema)
     - products : [
