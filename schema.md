@@ -30,7 +30,7 @@
     - name : String
     - description : String
 
-- ## Order
+https://github.com/ShapeAI/ecommerce-backend.git- ## Order
     - address : Adress (from address schema)
     - user : User (from user schema)
     - products : [
