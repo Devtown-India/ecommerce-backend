@@ -1,8 +1,9 @@
 import express from "express";
-import User from "../services/mongodb/models/User";
+import {User} from "../services/mongodb/schema";
 import bcrypt from "bcryptjs";
 import { validationResult, body } from "express-validator";
-import jwt from "jsonwebtoken";
+
+import { signJWT, something } from "../utils/index"
 
 const router = express.Router();
 
@@ -117,15 +118,11 @@ router.post(
 
       //   verified user create the JWT
 
-      const token = jwt.sign(
-        {
+      const token = signJWT({
           id: user._id,
           email: user.email,
           role: user.role,
-        },
-        process.env.JWT_SECRET,
-        { expiresIn: "24h" }
-      );
+        })
 
       await user.save();
 
