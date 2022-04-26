@@ -2,9 +2,8 @@ import express from "express";
 import {User} from "../services/mongodb/schema";
 import bcrypt from "bcryptjs";
 import { validationResult, body } from "express-validator";
-import jwt from 'jsonwebtoken'
 
-import { signJWT } from "../utils/index"
+import { signJWT, verifyJWT } from "../utils/index"
 
 const router = express.Router();
 
@@ -199,15 +198,15 @@ router.get(
   async (req, res) => {
     try {
       const token = req.headers["authorization"].split(' ')[1];
-      // const data = 
-      // const users = await User.find({ }).select("firstName lastName email orders addresses");
-      console.log(token)
+      const {id} = verifyJWT(token)
+      const user = await User.findOne({_id:id})
+      
       return res.json({
         data: {
-          user:null,
+          user,
         },
         success: true,
-        message: "Users fetched successfully",
+        message: "User profile fetched successfully",
       });
     } catch (error) {
       console.log(error);
