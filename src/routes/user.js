@@ -3,7 +3,7 @@ import {User} from "../services/mongodb/schema";
 import bcrypt from "bcryptjs";
 import { validationResult, body } from "express-validator";
 
-import { signJWT, something } from "../utils/index"
+import { signJWT } from "../utils/index"
 
 const router = express.Router();
 
@@ -145,5 +145,44 @@ router.post(
     }
   }
 );
+
+
+/*
+type : GET
+path : /user/all
+body : none
+query: none
+description: Route to get all users
+*/
+
+router.get(
+  "/all",
+  // !TODO make sure that only the admin can access this route
+  async (req, res) => {
+    try {
+     
+
+      const users = await User.find({ }).select("firstName lastName email orders addresses");
+
+      return res.json({
+        data: {
+          users,
+        },
+        success: true,
+        message: "Users fetched successfully",
+      });
+    } catch (error) {
+      console.log(error);
+      return res.json({
+        data: {
+          users: [],
+        },
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+);
+
 
 export default router;
