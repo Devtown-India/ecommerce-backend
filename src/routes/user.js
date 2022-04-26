@@ -2,6 +2,7 @@ import express from "express";
 import {User} from "../services/mongodb/schema";
 import bcrypt from "bcryptjs";
 import { validationResult, body } from "express-validator";
+import jwt from 'jsonwebtoken'
 
 import { signJWT } from "../utils/index"
 
@@ -184,5 +185,41 @@ router.get(
   }
 );
 
+/*
+type : GET
+path : /user/profile/me
+body : none
+query: none
+header: authorization = bearer token
+description: Route to get all users
+*/
+
+router.get(
+  "/profile/me",
+  async (req, res) => {
+    try {
+      const token = req.headers["authorization"].split(' ')[1];
+      // const data = 
+      // const users = await User.find({ }).select("firstName lastName email orders addresses");
+      console.log(token)
+      return res.json({
+        data: {
+          user:null,
+        },
+        success: true,
+        message: "Users fetched successfully",
+      });
+    } catch (error) {
+      console.log(error);
+      return res.json({
+        data: {
+          user: null,
+        },
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+);
 
 export default router;
