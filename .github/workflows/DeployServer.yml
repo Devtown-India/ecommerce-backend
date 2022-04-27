@@ -15,5 +15,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: test workflow
         run: echo "YAY this workflow is running"
-      - name : list
+      - name : install deps
+        run: npm i
+      - name: create build
+      - name: list files
         run: ls
