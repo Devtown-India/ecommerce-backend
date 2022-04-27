@@ -15,7 +15,7 @@ app.use(express.json())
 app.use('/user',userRoutes)
 
 app.get('/',(req,res)=>{
-    res.send(`Server deployed by CI/CD pipeline with secrets ${new Date.now()} `);
+    res.send(`Server deployed by CI/CD pipeline with secrets `);
 })
 
 app.get("/getenvs", (req, res) => {
