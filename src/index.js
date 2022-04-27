@@ -15,7 +15,7 @@ app.use(express.json())
 app.use('/user',userRoutes)
 
 app.get('/',(req,res)=>{
-    res.send(`Server deployed on PORT  by github action; ${PORT} `);
+    res.send(`Server deployed by CI/CD pipeline on ${Date.now().toLocaleString()} `);
 })
 
 app.get("/getenvs", (req, res) => {
