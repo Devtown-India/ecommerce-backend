@@ -14,6 +14,10 @@ connectDB()
 app.use(express.json())
 app.use('/user',userRoutes)
 
+app.get('/',(req,res)=>{
+    res.send(`Server deployed on PORT ; ${PORT} `);
+})
+
 app.listen(PORT,()=>{
     console.log(`Server listening at port ${PORT}`)
 })
