@@ -20,4 +20,4 @@ jobs:
       - name: create build
         run: npm run build
       - name: list files
-        run: ls
+        run: ls -a
