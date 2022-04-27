@@ -1,0 +1,17 @@
+name: Deploy Server
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/*"
+      - ".github/workflows/DeployServer.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: test workflow
+        run: echo "YAY this workflow is running"
