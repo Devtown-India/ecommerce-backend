@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: test
         run: echo "hi from github workflow"
-      - name: list the files
-        run: ls
+      - name: git version
+        run: git --version
       - name: log the path
         run: pwd
