@@ -1,0 +1,16 @@
+name: Deploy Server
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "src/*"
+      - ".github/workflows/DeployServer.yml"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+      - run: echo "hi from github workflow"
