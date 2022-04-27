@@ -24,7 +24,7 @@ jobs:
         run: git config --global user.email "gupta.kartik18kg@gmail.com"
       - name: add heroku remote
         run: git remote add heroku https://heroku:${{secrets.HEROKU_API_KEY}}@git.heroku.com/${{secrets.HEROKU_APP_NAME}}.git
-      - name: push to herku
+      - name: push to heroku
         run: git push heroku master --force
 
  
