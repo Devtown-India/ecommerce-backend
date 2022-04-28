@@ -5,7 +5,10 @@ const ProductSchema = new mongoose.Schema(
     name: {
       type: String,
       required: true,
-      unique: true,
+    },
+    description: {
+      type: String,
+      required: true,
     },
     stickerPrice: {
       type: Number,
@@ -32,10 +35,10 @@ const ProductSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    compatibleWith:{
-        type:String,
-        enum : ["iPhone","Mac","Apple Watch", "Airpods"]
-    }
+    compatibleWith: {
+      type: String,
+      enum: ["iPhone", "Mac", "Apple Watch", "Airpods"],
+    },
   },
   {
     timestamps: true,
