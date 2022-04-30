@@ -204,7 +204,7 @@ router.get(
     try {
       const token = req.headers["authorization"].split(' ')[1];
       const {id} = verifyJWT(token)
-      const user = await User.findOne({_id:id})
+      const user = await User.findOne({_id:id}).populate("addresses")
       
       return res.json({
         data: {

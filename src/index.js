@@ -6,6 +6,7 @@ dotenv.config('./.env')
 import userRoutes from './routes/user'
 import categoryRoutes from './routes/category'
 import productRoutes from './routes/product'
+import addressRoutes from './routes/address'
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(express.json())
 app.use('/user',userRoutes)
 app.use('/category',categoryRoutes)
 app.use('/product',productRoutes)
+app.use('/address',addressRoutes)
 
 app.get('/',(req,res)=>{
     res.send(`Server deployed by CI/CD pipeline with secrets `);
