@@ -75,4 +75,11 @@ router.post(
   }
 );
 
+/*
+! TODO create a route to delete an address from the DB
+-> use the isAuthenticated middleware
+-> find the user and use $Pull to modify the address array by removing the address
+-> then findONeandDelete on Address
+ */
+
 export default router;
