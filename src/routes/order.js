@@ -14,7 +14,8 @@ query: none
 description: Route to get all orders
 */
 
-// !discuss custom validators
+//! admin route
+
 router.get(
   "/all",
   isAuthenticated,
@@ -29,7 +30,7 @@ router.get(
           orders,
         },
         success: false,
-        message: "orders created",
+        message: "All orders fetched",
       });
     } catch (error) {
       console.log(error);
@@ -43,5 +44,42 @@ router.get(
     }
   }
 );
+
+/*
+type : GET
+path : /order/me
+body : none
+query: none
+description: Route to get all orders
+*/
+//!User route
+router.get(
+  "/me",
+  isAuthenticated,
+  async (req, res) => {
+    try {
+        const user = req.user
+      const orders = await Order.find({_id:user})
+
+      return res.json({
+        data: {
+          orders,
+        },
+        success: false,
+        message: "user orders fetched",
+      });
+    } catch (error) {
+      console.log(error);
+      return res.json({
+        data: {
+          orders: [],
+        },
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+);
+
 
 export default router;
