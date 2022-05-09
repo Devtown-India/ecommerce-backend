@@ -24,7 +24,7 @@ router.post(
   body("markedPrice").isNumeric(),
   body("image").isLength({ min: 5 }),
   body("stock").isNumeric(),
-  body("color").isLength({min:1}),
+  body("color").isLength({ min: 1 }),
   async (req, res) => {
     try {
       const { errors } = validationResult(req);
@@ -37,7 +37,17 @@ router.post(
           message: "validation failed",
         });
 
-      const { name, description,stickerPrice,markedPrice,image,stock,color,category,compatibleWith } = req.body;
+      const {
+        name,
+        description,
+        stickerPrice,
+        markedPrice,
+        image,
+        stock,
+        color,
+        category,
+        compatibleWith,
+      } = req.body;
 
       const product = new Product({
         name,
@@ -81,7 +91,7 @@ description: Route to fetch all categories
 
 router.get("/all", async (req, res) => {
   try {
-    const products = await Product.find({}).populate('category');
+    const products = await Product.find({}).populate("category");
     return res.json({
       data: {
         products,
@@ -109,9 +119,10 @@ query: none
 description: Route to fetch all categories
 */
 
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", isAuthenticated, isAdmin, async (req, res) => {
   try {
-    const product = await Product.findOneAndDelete({_id:id});
+    const { id } = req.params;
+    const product = await Product.findOneAndDelete({ _id: id });
     return res.json({
       data: {
         product,
@@ -123,7 +134,7 @@ router.delete("/:id", async (req, res) => {
     console.log(error);
     return res.json({
       data: {
-        product:null,
+        product: null,
       },
       success: false,
       message: error.message,

@@ -2,7 +2,7 @@ import express from "express";
 import { body, validationResult } from "express-validator";
 import { isAdmin } from "../services/middlewares/isAdmin";
 import { isAuthenticated } from "../services/middlewares/isAuthenticated";
-import { Category } from "../services/mongodb/schema";
+import { Category, Product } from "../services/mongodb/schema";
 
 const router = express.Router();
 
@@ -86,4 +86,48 @@ router.get("/all", async (req, res) => {
   }
 });
 
+/*
+type : DELETE
+path : /category/:id
+body : none
+query: none
+description: Route to fetch all categories
+*/
+
+router.delete("/:id", isAuthenticated, isAdmin, async (req, res) => {
+  try {
+    const { id } = req.params;
+    const category = await Category.findOneAndDelete({ _id: id });
+
+    // check if a product is using this category
+
+    const products = Product.find({category:id})
+
+    if(products.length>0) return res.json({
+      data: {
+        category:null,
+      },
+      success: false,
+      message: "category could not be deleted",
+    });
+
+
+    return res.json({
+      data: {
+        category,
+      },
+      success: true,
+      message: "category deleted",
+    });
+  } catch (error) {
+    console.log(error);
+    return res.json({
+      data: {
+        category: null,
+      },
+      success: false,
+      message: error.message,
+    });
+  }
+});
 export default router;
