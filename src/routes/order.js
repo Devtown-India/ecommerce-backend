@@ -50,7 +50,7 @@ type : GET
 path : /order/me
 body : none
 query: none
-description: Route to get all orders
+description: Route to get all user orders
 */
 //!User route
 router.get(
