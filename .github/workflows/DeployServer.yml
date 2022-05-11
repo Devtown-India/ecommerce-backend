@@ -20,6 +20,8 @@ jobs:
           fetch-depth: 0
       - name: add github username
         run: git config --global user.name "Kartik18g"
+      - name: echo
+        run: echo working
       - name: add github email
         run: git config --global user.email "gupta.kartik18kg@gmail.com"
       - name: add heroku remote
