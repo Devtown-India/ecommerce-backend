@@ -40,7 +40,7 @@ router.post(
         data: {
           category,
         },
-        success: false,
+        success: true,
         message: "Category added",
       });
     } catch (error) {
@@ -71,7 +71,7 @@ router.get("/all", async (req, res) => {
       data: {
         categories,
       },
-      success: false,
+      success: true,
       message: "Categories fetched",
     });
   } catch (error) {
