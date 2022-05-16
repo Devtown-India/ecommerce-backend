@@ -133,7 +133,8 @@ router.post(
           token,
           user:{
             email:user.email,
-            id:user._id
+            id:user._id,
+            role:user.role,
           }
         },
         success: true,

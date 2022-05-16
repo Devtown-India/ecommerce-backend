@@ -1,6 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import { connectDB } from './services/mongodb/connectDB'
+import cors from 'cors'
 dotenv.config('./.env')
 
 import userRoutes from './routes/user'
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 8080
 connectDB()
 
 app.use(express.json())
+app.use(cors())
 app.use('/user',userRoutes)
 app.use('/category',categoryRoutes)
 app.use('/product',productRoutes)
