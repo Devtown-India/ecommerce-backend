@@ -96,7 +96,7 @@ router.get("/all", async (req, res) => {
       data: {
         products,
       },
-      success: false,
+      success: true,
       message: "Products fetched",
     });
   } catch (error) {
